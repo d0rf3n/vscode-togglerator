@@ -1,0 +1,66 @@
+{
+  "name": "togglerator",
+  "publisher": "d0rf3n",
+  "displayName": "Togglerator",
+  "description": "Toggle first occurence of user specified tags on same line.",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:togglerator.toggle"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "togglerator.toggle",
+        "title": "Togglerator: Toggle"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "togglerator.toggle",
+        "key": "alt+t",
+        "mac": "alt+t",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration":[
+      {
+        "title": "Togglerator",
+        "properties": {
+          "togglerator.tags": {
+            "type": "string",
+            "default": "TODO;DONE",
+            "description": "Tags that are to be toggled between (separated by semi-colons, no spaces)"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.55.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  }
+}
